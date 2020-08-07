@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Wilma fixer
-// @namespace    https://jonnelafin.github.io/
-// @version      1.0
-// @description  Fixes the labeling on some finnish wilma-instances.
+// @namespace    https://jonnelafin.github.io/WilmaFixer/
+// @version      1.1
+// @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @match        https://yvkoulut.inschool.fi/schedule*
 // @grant        none
