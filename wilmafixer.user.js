@@ -7,6 +7,9 @@
 // @license      MIT; https://spdx.org/licenses/MIT.html
 // @match        https://yvkoulut.inschool.fi/schedule*
 // @grant        none
+// @updateURL    https://openuserjs.org/meta/jonnelafin/Wilma_fixer.meta.js
+// @downloadURL  https://openuserjs.org/install/jonnelafin/Wilma_fixer.user.js
+// @copyright    2020, jonnelafin (https://openuserjs.org/users/jonnelafin)
 // ==/UserScript==
 
 (function() {
