@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.1
+// @version      1.2
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -12,20 +12,28 @@
 // @copyright    2020, jonnelafin (https://openuserjs.org/users/jonnelafin)
 // ==/UserScript==
 
+const rclassn = true;
+const rteachn = false;
+const rroomnn = false;
+const fontsize = "12px";
+const uz = function(valz) {
+    alert(valz);
+};
 (function() {
     'use strict';
 
     // Your code here...
-    var settings = document.getElementsByClassName("dropdown-menu")[0];
+    var settings = document.getElementsByClassName("dropdown-menu")[3];
+    settings.insertAdjacentHTML('beforeend', "<li class=\"dropdown-header\">Wilma Fixer</li>");
+    settings = document.getElementsByClassName("dropdown-menu")[3];
+    settings.insertAdjacentHTML('beforeend', "<li><a href=\"\">Font Size: </a></li>");
+    settings = document.getElementsByClassName("dropdown-menu")[3];
+    settings.insertAdjacentHTML('beforeend', "<select id=\"ddlViewBy\" onchange=\"alert(this.options[this.selectedIndex].value);\">   <option value=\"11px\">11</option>   <option value=\"12px\" selected=\"selected\">12</option>   <option value=\"14px\">14</option>   </select>");
     var blocks = document.getElementsByClassName("block");
     var targets_src = document.getElementsByClassName("no-underline-link");
     var cont = document.getElementById("container");
     //cont.height = "200%";
     //
-    var rclassn = true;
-    var rteachn = false;
-    var rroomnn = false;
-    var fontsize = "12px";
     //
     var targets = [];
     for (var i=0; i < blocks.length; i+=1){
