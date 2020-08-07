@@ -4,6 +4,7 @@
 // @version      1.1
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
+// @license      MIT
 // @match        https://yvkoulut.inschool.fi/schedule*
 // @grant        none
 // ==/UserScript==
