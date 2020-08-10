@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.2
+// @version      1.3
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -12,9 +12,11 @@
 // @copyright    2020, jonnelafin (https://openuserjs.org/users/jonnelafin)
 // ==/UserScript==
 
-const rclassn = true;
-const rteachn = false;
-const rroomnn = false;
+//Toggles for different parts of the schedule
+var rclassn = true;
+var rteachn = false;
+var rroomnn = false;
+//stuff
 const fontsize = "12px";
 const uz = function(valz) {
     alert(valz);
@@ -24,7 +26,7 @@ const uz = function(valz) {
 
     // Your code here...
     var settings = document.getElementsByClassName("dropdown-menu")[3];
-    settings.insertAdjacentHTML('beforeend', "<li class=\"dropdown-header\">Wilma Fixer</li>");
+    settings.insertAdjacentHTML('beforeend', "<li class=\"dropdown-header\">Wilma Fixer v1.3 by jf</li>");
     settings = document.getElementsByClassName("dropdown-menu")[3];
     settings.insertAdjacentHTML('beforeend', "<li><a href=\"\">Font Size: </a></li>");
     settings = document.getElementsByClassName("dropdown-menu")[3];
@@ -32,31 +34,87 @@ const uz = function(valz) {
     var blocks = document.getElementsByClassName("block");
     var targets_src = document.getElementsByClassName("no-underline-link");
     var cont = document.getElementById("container");
+    //jakso
+    var jakso_dropdown = document.querySelectorAll("li[role='presentation active']")[0];
+    var jakso = (jakso_dropdown.innerHTML).split(" (")[0].split(">")[1];
+    console.log("Jakso: " + jakso);
+    var jakso_to = document.getElementsByClassName("row")[0];
+    console.log(jakso_to);
     //cont.height = "200%";
     //
     //
     var targets = [];
+    var lastday = "-start-";
+    var starts = {};
+    var ends = {};
     for (var i=0; i < blocks.length; i+=1){
         var block = blocks[i];
-        console.log(block.style.height);
         //block.style.height = ;
         var childs = block.childNodes[0].childNodes;
         var classn = childs[0];
+        //get course metadata
+        var metas = block.getElementsByClassName("sr-only");
+        var meta = metas[0].innerHTML;
+        var day = meta.split(": ")[0];
+        var start = ( meta = meta.split(": Alkamisaika")[1] ).split("Päättymisaika")[0];
+        var end = ( meta = meta.split("Päättymisaika")[1] ).split(": ")[0];
+        //var
+        /*
+        console.log(day);
+        console.log(start);
+        console.log(end);
+        */
+        if(!starts[day]){
+            starts[day] = start;
+        }
+        ends[day] = end;
+        //size changes
         classn.style.fontSize = fontsize;
-        var teachn = childs[1];
-        teachn.style.fontSize = fontsize;
-        var roomnn = childs[2];
-        roomnn.style.fontSize = fontsize;
+        if(childs.length < 3){
+            rteachn = false;
+        }
+        else{
+            var teachn = childs[1];
+            teachn.style.fontSize = fontsize;
+        }
+        if(childs.length < 3){
+            rroomnn = false;
+        }
+        else{
+            var roomnn = childs[2];
+            roomnn.style.fontSize = fontsize;
+        }
         if(rclassn === true){
             classn.innerHTML = classn.title;
         }
-        if(teachn === true){
+        if(rteachn === true){
             teachn.innerHTML = teachn.title;
         }
-        if(roomnn === true){
-            roomnn.innerHTML = roomnn.title;
+        if(rroomnn === true){
+            //roomnn.innerHTML = roomnn.title;
         }
     }
+    console.log(starts);
+    console.log(ends);
+    console.log();
+    console.log();
+    var paivat = Object.keys(starts);
+    var o = jakso + ": \n";
+    for(i=0; i < paivat.length; i+=1){
+        var s = starts[paivat[i]];
+        var e = ends[paivat[i]];
+        o = o + paivat[i] + ":		" + s + " - " + e + "\n";
+    }
+    console.log(o);
+    o = jakso + ": <br \>";
+    for(i=0; i < paivat.length; i+=1){
+        s = starts[paivat[i]];
+        e = ends[paivat[i]];
+        o = o + paivat[i] + ":		" + s + " - " + e + "<br \>";
+    }
+    var ajat = document.createElement("p")
+    jakso_to.appendChild(ajat);
+    ajat.innerHTML = "" + o + "";
     /*
     for ( i=0; i < targets_src.length; i+=3 )
     {
