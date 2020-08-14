@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.3
+// @version      1.4
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -47,6 +47,7 @@ const uz = function(valz) {
     var lastday = "-start-";
     var starts = {};
     var ends = {};
+    var tochange = {};
     for (var i=0; i < blocks.length; i+=1){
         var block = blocks[i];
         //block.style.height = ;
@@ -85,6 +86,7 @@ const uz = function(valz) {
             roomnn.style.fontSize = fontsize;
         }
         if(rclassn === true){
+            tochange[classn.innerHTML] = classn.title;
             classn.innerHTML = classn.title;
         }
         if(rteachn === true){
@@ -115,6 +117,18 @@ const uz = function(valz) {
     var ajat = document.createElement("p")
     jakso_to.appendChild(ajat);
     ajat.innerHTML = "" + o + "";
+    tochange = JSON.stringify(tochange);
+    var det = document.createElement("p")
+    det.innerHTML = tochange;
+    var changetable = document.createElement("details");
+    jakso_to.appendChild(changetable);
+    var sum = document.createElement("summary")
+    sum.innerHTML = "Changetable";
+    changetable.appendChild(sum);
+    changetable.appendChild(det);
+    console.log("Changed: ");
+    console.log(tochange);
+    console.log("Wilmafixer script finished.");
     /*
     for ( i=0; i < targets_src.length; i+=3 )
     {
