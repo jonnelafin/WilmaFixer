@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.4
+// @version      1.5
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -26,12 +26,15 @@ const uz = function(valz) {
 
     // Your code here...
     var settings = document.getElementsByClassName("dropdown-menu")[3];
-    settings.insertAdjacentHTML('beforeend', "<li class=\"dropdown-header\">Wilma Fixer v1.3 by jf</li>");
+    settings.insertAdjacentHTML('beforeend', "<li class=\"dropdown-header\">Wilma Fixer v1.5 by jf</li>");
     settings = document.getElementsByClassName("dropdown-menu")[3];
     settings.insertAdjacentHTML('beforeend', "<li><a href=\"\">Font Size: </a></li>");
     settings = document.getElementsByClassName("dropdown-menu")[3];
     settings.insertAdjacentHTML('beforeend', "<select id=\"ddlViewBy\" onchange=\"alert(this.options[this.selectedIndex].value);\">   <option value=\"11px\">11</option>   <option value=\"12px\" selected=\"selected\">12</option>   <option value=\"14px\">14</option>   </select>");
     var blocks = document.getElementsByClassName("block");
+    var body = document.getElementsByClassName("somebody")[0];
+    body.style.background = "rgb(0,0,0)";
+    body.style.color = "rgb(255, 255, 255)";
     var targets_src = document.getElementsByClassName("no-underline-link");
     var cont = document.getElementById("container");
     //jakso
@@ -39,7 +42,33 @@ const uz = function(valz) {
     var jakso = (jakso_dropdown.innerHTML).split(" (")[0].split(">")[1];
     console.log("Jakso: " + jakso);
     var jakso_to = document.getElementsByClassName("row")[0];
+    jakso_to.style.background = "rgb(25, 25, 25)";
+    document.getElementById("page-content-area").style.background = "rgb(50, 50, 50)";
+    document.getElementById("page-content-area").style.color = "rgb(200, 200, 200)";
     console.log(jakso_to);
+    var all = document.getElementsByTagName("label");
+    for (var i8 = 0; i8 < all.length; i8++) {
+        all[i8].style.color = "rgb(200, 200, 200)";
+    }
+    all = document.getElementsByTagName("button");
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].style.color = "rgb(200, 200, 200)";
+        all[i8].style.background = "rgb(20, 20, 20)";
+        console.log(all[i8]);
+    }
+    all = document.getElementsByTagName("input");
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].style.color = "rgb(200, 200, 200)";
+        all[i8].style.background = "rgb(20, 20, 20)";
+        console.log(all[i8]);
+    }
+    all = document.getElementsByTagName("alert");
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].style.color = "rgb(200, 200, 200)";
+        all[i8].style.background = "rgb(20, 20, 20)";
+        console.log(all[i8]);
+    }
+    document.getElementsByClassName("active")[1].style.color = "rgb(200, 200, 200)";
     //cont.height = "200%";
     //
     //
@@ -86,7 +115,7 @@ const uz = function(valz) {
             roomnn.style.fontSize = fontsize;
         }
         if(rclassn === true){
-            tochange[classn.innerHTML] = classn.title;
+            tochange[classn.innerHTML.split(": ")[1]] = classn.title;
             classn.innerHTML = classn.title;
         }
         if(rteachn === true){
@@ -95,6 +124,8 @@ const uz = function(valz) {
         if(rroomnn === true){
             //roomnn.innerHTML = roomnn.title;
         }
+        block.style.background = "rgb(16, 20, 24)";
+        block.style.color = "#4D8400";
     }
     console.log(starts);
     console.log(ends);
