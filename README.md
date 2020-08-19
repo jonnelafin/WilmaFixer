@@ -1,5 +1,5 @@
 # WilmaFixer
-A simple TamperMonkey script that fixes the labeling on your wilma schedules.
+A simple TamperMonkey script that improves the labeling on your wilma schedules.
 
 # Install It Now
 [Easy-to-install-definetly-the-latest-script](https://openuserjs.org/scripts/jonnelafin/Wilma_fixer)
