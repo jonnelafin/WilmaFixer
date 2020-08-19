@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.5
+// @version      1.51
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -54,18 +54,33 @@ const uz = function(valz) {
     for (i8 = 0; i8 < all.length; i8++) {
         all[i8].style.color = "rgb(200, 200, 200)";
         all[i8].style.background = "rgb(20, 20, 20)";
-        console.log(all[i8]);
     }
     all = document.getElementsByTagName("input");
     for (i8 = 0; i8 < all.length; i8++) {
         all[i8].style.color = "rgb(200, 200, 200)";
         all[i8].style.background = "rgb(20, 20, 20)";
-        console.log(all[i8]);
     }
     all = document.getElementsByTagName("alert");
     for (i8 = 0; i8 < all.length; i8++) {
         all[i8].style.color = "rgb(200, 200, 200)";
         all[i8].style.background = "rgb(20, 20, 20)";
+    }
+    all = document.querySelectorAll("li[role='presentation']");
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].children[0].style.color = "rgb(200, 200, 200)";
+        all[i8].children[0].style.background = "rgb(20, 20, 20)";
+        console.log(all[i8]);
+    }
+    all = document.getElementsByClassName("dropdown-menu")
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].style.color = "rgb(200, 200, 200)";
+        all[i8].style.background = "rgb(20, 20, 20)";
+        console.log(all[i8]);
+    }
+    all = document.getElementsByClassName("modal-body")
+    for (i8 = 0; i8 < all.length; i8++) {
+        all[i8].children[1].style.color = "rgb(200, 200, 200)";
+        all[i8].children[1].style.background = "rgb(20, 20, 20)";
         console.log(all[i8]);
     }
     document.getElementsByClassName("active")[1].style.color = "rgb(200, 200, 200)";
@@ -154,7 +169,7 @@ const uz = function(valz) {
     var changetable = document.createElement("details");
     jakso_to.appendChild(changetable);
     var sum = document.createElement("summary")
-    sum.innerHTML = "Changetable";
+    sum.innerHTML = "<a onclick=\";\">Show Changetable</a>";
     changetable.appendChild(sum);
     changetable.appendChild(det);
     console.log("Changed: ");
