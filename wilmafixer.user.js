@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wilma fixer
 // @namespace    https://jonnelafin.github.io/WilmaFixer/
-// @version      1.51
+// @version      1.55
 // @description  Fixes the labeling on some finnish wilma-instances. Under the MIT-License, please use the according attribution when forking.
 // @author       jonnelafin
 // @license      MIT; https://spdx.org/licenses/MIT.html
@@ -83,6 +83,11 @@ const uz = function(valz) {
         all[i8].children[1].style.background = "rgb(20, 20, 20)";
         console.log(all[i8]);
     }
+    //more style
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = '.modal-content { color : rgb(200, 200, 200); background : rgb(20, 20, 20);}';
+    document.getElementsByTagName('head')[0].appendChild(style);
     document.getElementsByClassName("active")[1].style.color = "rgb(200, 200, 200)";
     //cont.height = "200%";
     //
